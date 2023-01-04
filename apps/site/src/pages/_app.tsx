@@ -26,7 +26,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
 				<link rel="icon" href="/favicon/favicon-32x32.png" />
 				<link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
 				<link rel="manifest" href="/manifest.webmanifest" />
-				<title>NextJS WW Starter</title>
+				<title>WTW Occasional Cards 2022</title>
 			</Head>
 
 			{getLayout(<Component {...pageProps} />)}

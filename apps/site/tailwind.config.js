@@ -11,7 +11,14 @@ module.exports = {
 			},
 		},
 
-		extend: {},
+		extend: {
+			colors: {
+				header: "#6FA59C",
+				orange: {
+					main: "#F58C44"
+				},
+			}
+		},
 	},
 	plugins: [
 		require("@tailwindcss/forms"),

@@ -2,7 +2,7 @@ module.exports = {
 	content: ["./src/**/*.{ts,tsx}"],
 	theme: {
 		fontFamily: {
-			sans: ["system-ui"],
+			sans: ["greycliff-cf" , "system-ui"],
 		},
 
 		capsize: {
@@ -19,13 +19,15 @@ module.exports = {
 				},
 				yellow: {
 					search: "#F9B740"
-				}
-			}
+				},
+				body: "#E5DED9"
+			},
 		},
 	},
 	plugins: [
 		require("@tailwindcss/forms"),
 		require("@tailwindcss/aspect-ratio"),
 		require("@asyarb/tailwind-capsize"),
+		require('tailwind-scrollbar-hide')
 	],
 }

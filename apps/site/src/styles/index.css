@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 html {
 	text-rendering: optimizeSpeed;
 }
@@ -38,3 +39,4 @@ button {
 #__next {
 	isolation: isolate;
 }
+

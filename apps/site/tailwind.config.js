@@ -17,6 +17,9 @@ module.exports = {
 				orange: {
 					main: "#F58C44"
 				},
+				yellow: {
+					search: "#F9B740"
+				}
 			}
 		},
 	},

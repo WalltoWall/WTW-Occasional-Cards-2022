@@ -17,9 +17,9 @@ const Reset = () => {
 			<g
 				id="Design"
 				stroke="none"
-				stroke-width="1"
+				strokeWidth="1"
 				fill="none"
-				fill-rule="evenodd"
+				fillRule="evenodd"
 			>
 				<g id="Home-Page" transform="translate(-497.000000, -970.000000)">
 					<g
@@ -38,7 +38,7 @@ const Reset = () => {
 						<rect
 							id="Rectangle-Copy"
 							stroke="#000000"
-							stroke-width="3"
+							strokeWidth="3"
 							fill="#F9B740"
 							x="1.5"
 							y="1.5"
@@ -90,11 +90,11 @@ const Reset = () => {
 						</g>
 						<text
 							id="START-OVER"
-							font-family="GreycliffCF-Bold, Greycliff CF"
-							font-size="20"
-							font-weight="bold"
+							fontFamily="GreycliffCF-Bold, Greycliff CF"
+							fontSize="20"
+							fontWeight="bold"
 							line-spacing="22"
-							letter-spacing="2"
+							letterSpacing="2"
 							fill="#000000"
 						>
 							<tspan x="97" y="32">

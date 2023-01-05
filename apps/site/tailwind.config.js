@@ -2,7 +2,7 @@ module.exports = {
 	content: ["./src/**/*.{ts,tsx}"],
 	theme: {
 		fontFamily: {
-			sans: ["greycliff-cf" , "system-ui"],
+			sans: ["greycliff-cf", "system-ui"],
 		},
 
 		capsize: {
@@ -13,8 +13,8 @@ module.exports = {
 					descent: -344,
 					lineGap: 0,
 					unitsPerEm: 1000,
-					xHeight: 490
-				  },
+					xHeight: 490,
+				},
 			},
 		},
 
@@ -22,23 +22,24 @@ module.exports = {
 			colors: {
 				header: "#6FA59C",
 				orange: {
-					main: "#F58C44"
+					main: "#F58C44",
 				},
 				yellow: {
-					search: "#F9B740"
+					search: "#F9B740",
 				},
-				body: "#E5DED9"
+				body: "#E5DED9",
 			},
 			fontSize: {
 				15: "15px",
+				20: "20px",
 				22: "22px",
-			}
+			},
 		},
 	},
 	plugins: [
 		require("@tailwindcss/forms"),
 		require("@tailwindcss/aspect-ratio"),
 		require("@asyarb/tailwind-capsize"),
-		require('tailwind-scrollbar-hide')
+		require("tailwind-scrollbar-hide"),
 	],
 }

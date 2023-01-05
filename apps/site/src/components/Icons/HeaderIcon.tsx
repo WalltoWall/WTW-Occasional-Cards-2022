@@ -18,9 +18,9 @@ const HeaderIcon = () => {
 			<g
 				id="Design"
 				stroke="none"
-				stroke-width="1"
+				strokeWidth="1"
 				fill="none"
-				fill-rule="evenodd"
+				fillRule="evenodd"
 			>
 				<g id="Home-Page" transform="translate(-295.000000, -18.000000)">
 					<g id="Header" transform="translate(295.266904, 18.000000)">

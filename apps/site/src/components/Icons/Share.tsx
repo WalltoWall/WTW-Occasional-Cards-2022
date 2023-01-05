@@ -19,9 +19,9 @@ const Share = () => {
 			<g
 				id="Design"
 				stroke="none"
-				stroke-width="1"
+				strokeWidth="1"
 				fill="none"
-				fill-rule="evenodd"
+				fillRule="evenodd"
 			>
 				<g id="Home-Page" transform="translate(-1255.000000, -970.000000)">
 					<g id="Share-Button" transform="translate(1255.000000, 970.000000)">
@@ -47,11 +47,11 @@ const Share = () => {
 						></rect>
 						<text
 							id="SHARE"
-							font-family="GreycliffCF-Bold, Greycliff CF"
-							font-size="20"
-							font-weight="bold"
+							fontFamily="GreycliffCF-Bold, Greycliff CF"
+							fontSize="20"
+							fontWeight="bold"
 							line-spacing="22"
-							letter-spacing="2"
+							letterSpacing="2"
 							fill="#000000"
 						>
 							<tspan x="72" y="42">

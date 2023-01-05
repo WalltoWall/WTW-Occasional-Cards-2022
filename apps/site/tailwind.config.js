@@ -7,7 +7,14 @@ module.exports = {
 
 		capsize: {
 			metrics: {
-				sans: require("@capsizecss/metrics/appleSystem"),
+				sans: {
+					capHeight: 700,
+					ascent: 1118,
+					descent: -344,
+					lineGap: 0,
+					unitsPerEm: 1000,
+					xHeight: 490
+				  },
 			},
 		},
 
@@ -22,6 +29,10 @@ module.exports = {
 				},
 				body: "#E5DED9"
 			},
+			fontSize: {
+				15: "15px",
+				22: "22px",
+			}
 		},
 	},
 	plugins: [

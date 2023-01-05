@@ -6,6 +6,7 @@ const HeaderIcon = () => {
 			viewBox="0 0 790 153"
 			version="1.1"
 			xmlns="http://www.w3.org/2000/svg"
+			className="w-[400px] lg:w-[790px]"
 		>
 			<defs>
 				<polygon id="path--3iwd2_jkw-1" points="0 62 62 62 62 0 0 0"></polygon>

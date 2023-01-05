@@ -7,7 +7,7 @@ const SearchBar = () => {
 			<input
 				placeholder="Search"
 				type="text"
-				className="text-gray-400 text-[20px] font-medium outline-none border-none ml-2 rounded-full"
+				className="text-gray-400 text-[20px] font-medium outline-none border-none ml-2 rounded-full focus:ring-0"
 			/>
 			<button onClick={() => {}}>
 				<Search />

@@ -3,5 +3,5 @@ interface LayoutProps {
 }
 
 export const Layout = ({ children }: LayoutProps) => {
-	return <>{children}</>
+	return <div className="font-sans">{children}</div>
 }

@@ -141,7 +141,7 @@ const Stickers = () => {
 				<div className="bg-body rounded-full w-[50px] h-[50px]" />
 			</div>
 
-			<div className="grid grid-cols-2 auto-rows-auto mt-[3.375rem] px-[26px] gap-6">
+			<div className="grid grid-cols-2 auto-rows-auto mt-[3.375rem] justify-items-center px-[100px] lg:px-[26px] gap-5">
 				<div className="bg-white rounded-full w-[179px] h-[56px]" />
 				<div className="bg-white rounded-full w-[179px] h-[56px]" />
 				<div className="bg-white rounded-full w-[179px] h-[56px]" />

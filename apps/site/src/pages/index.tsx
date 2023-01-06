@@ -7,7 +7,7 @@ import Greeting from "src/components/Greeting"
 
 const HomePage: NextPageWithLayout = () => {
 	return (
-		<div className="grid grid-rows-[auto, 1fr, 1fr] lg:grid-rows-[auto,1fr] lg:grid-cols-[464px,1fr] h-screen">
+		<div className="grid grid-rows-[auto, 1fr, 1fr] lg:grid-rows-[auto,1fr] lg:grid-cols-[464px,1fr] h-screen max-w-screen-2xl">
 			<Header />
 			<main className="contents">
 				<div className="flex flex-col justify-start items-center pt-[26px] bg-black">

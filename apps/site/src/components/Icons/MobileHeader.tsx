@@ -21,7 +21,7 @@ const MobileHeader = () => {
 				stroke="none"
 				stroke-width="1"
 				fill="none"
-				fill-rule="evenodd"
+				fillRule="evenodd"
 			>
 				<g id="Intro" transform="translate(-543.000000, -181.000000)">
 					<g transform="translate(395.000000, 140.000000)" id="Group">

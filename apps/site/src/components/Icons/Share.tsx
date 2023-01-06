@@ -37,7 +37,7 @@ const Share = () => {
 						<rect
 							id="Rectangle-Copy"
 							stroke="#000000"
-							stroke-width="3"
+							strokeWidth="3"
 							fill="#F9B740"
 							x="1.5"
 							y="1.5"

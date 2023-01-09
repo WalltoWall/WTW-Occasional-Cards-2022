@@ -7,7 +7,7 @@ const HeaderIcon = (props: React.ComponentProps<"svg">) => {
 				<path id="a" d="M0 62h62V0H0z" />
 				<path id="c" d="M0 110h730V0H0z" />
 			</defs>
-			<g fill="none" fill-rule="evenodd">
+			<g fill="none" fillRule="evenodd">
 				<g transform="rotate(-20 86.542 14.48)">
 					<path
 						fill="#000"
@@ -1085,7 +1085,7 @@ const HeaderIcon = (props: React.ComponentProps<"svg">) => {
 					/>
 					<path
 						fill="#000"
-						fill-opacity=".2"
+						fillOpacity=".2"
 						d="M251.413 31h-.022L35.566 23.217A.598.598 0 0 1 35 22.59c.012-.334.28-.626.609-.585l215.825 7.782a.598.598 0 0 1 .566.628.595.595 0 0 1-.587.586"
 					/>
 					<path

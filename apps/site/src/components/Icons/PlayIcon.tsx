@@ -18,7 +18,7 @@ const PlayIcon = () => {
 				stroke="none"
 				stroke-width="1"
 				fill="none"
-				fill-rule="evenodd"
+				fillRule="evenodd"
 			>
 				<g id="Intro" transform="translate(-668.000000, -789.000000)">
 					<g transform="translate(395.000000, 140.000000)" id="Arrow-Button">
@@ -35,7 +35,7 @@ const PlayIcon = () => {
 							<rect
 								id="Rectangle-Copy"
 								stroke="#000000"
-								stroke-width="3"
+								strokeWidth="3"
 								fill="#F9B740"
 								x="1.5"
 								y="1.5"

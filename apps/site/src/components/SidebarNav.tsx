@@ -4,10 +4,31 @@ import SearchBar from "./SearchBar"
 import Triangle from "./Icons/Triangle"
 import TapeSetting from "./TapeSetting"
 import Image from "next/image"
+import clsx from "clsx"
 
 interface scroll {
 	button: RefObject<HTMLButtonElement>
 }
+
+const Trigger = React.forwardRef<HTMLButtonElement, Tabs.TabsTriggerProps>(
+	({ className, value, children, ...props }, ref) => {
+		return (
+			<Tabs.Trigger
+				value={value}
+				ref={ref}
+				className={clsx(
+					className,
+					"font-bold text-body text-20 tracking-widest uppercase rounded-full px-10 py-2 flex-shrink-0",
+					"data-[state=active]:bg-yellow-search data-[state=active]:text-black",
+				)}
+				{...props}
+			>
+				{children}
+			</Tabs.Trigger>
+		)
+	},
+)
+Trigger.displayName = "Trigger"
 
 const SidebarNav = () => {
 	const rPlaylistBtn = React.useRef<HTMLButtonElement>(null)
@@ -22,46 +43,42 @@ const SidebarNav = () => {
 	return (
 		<Tabs.Root
 			defaultValue="playlist"
-			className="bg-black py-7 px-8 text-white"
+			className="bg-black py-7 px-8 text-white overflow-hidden"
 		>
-			<Tabs.List className="space-x-20 flex">
-				<Tabs.Trigger
-					// className="data-[state=active]:bg-yellow-search data-[state=active]:py-[8px] data-[state=active]:px-[40px] data-[state=active]:rounded-full data-[state=active]:font-semibold
-					// data-[state=active]:w-[179px] data-[state=active]:h-[40px] data-[state=inactive]:text-body data-[state=inactive]:font-bold flex-shrink-0 uppercase text-20 tracking-widest"
+			<Tabs.List className="flex overflow-x-auto scrollbar-hide overflow-y-hidden px-8 overscroll-contain -mx-8">
+				<Trigger
 					value="playlist"
 					ref={rPlaylistBtn}
 					onClick={() => scrollBar({ button: rPlaylistBtn })}
 				>
 					Playlist
-				</Tabs.Trigger>
-				<Tabs.Trigger
-					// className="data-[state=active]:bg-yellow-search data-[state=active]:py-[8px] data-[state=active]:rounded-full data-[state=active]:font-semibold
-					// data-[state=active]:w-[179px] data-[state=active]:h-[40px] data-[state=inactive]:text-body data-[state=inactive]:font-bold flex-shrink-0 uppercase text-20 tracking-widest"
+				</Trigger>
+				<Trigger
 					value="customize"
 					ref={rCustomizeBtn}
 					onClick={() => scrollBar({ button: rCustomizeBtn })}
 				>
 					Customize
-				</Tabs.Trigger>
-				<Tabs.Trigger
-					// className="data-[state=active]:bg-yellow-search data-[state=active]:py-[8px] data-[state=active]:px-[40px] data-[state=active]:rounded-full data-[state=active]:font-semibold
-					// data-[state=active]:w-[179px] data-[state=active]:h-[40px] data-[state=inactive]:text-body data-[state=inactive]:font-bold flex-shrink-0 uppercase text-20 tracking-widest"
+				</Trigger>
+				<Trigger
 					value="stickers"
 					ref={rStickersBtn}
 					onClick={() => scrollBar({ button: rStickersBtn })}
 				>
 					Stickers
-				</Tabs.Trigger>
+				</Trigger>
 			</Tabs.List>
 
-			<Tabs.Content value="playlist">{/* <Playlist /> */}</Tabs.Content>
+			<Tabs.Content value="playlist">
+				<Playlist />
+			</Tabs.Content>
 
 			<Tabs.Content value="customize" className="w-full">
-				{/* <Customize /> */}
+				<Customize />
 			</Tabs.Content>
 
 			<Tabs.Content value="stickers" className="w-full">
-				{/* <Stickers /> */}
+				<Stickers />
 			</Tabs.Content>
 		</Tabs.Root>
 	)
@@ -70,7 +87,7 @@ const SidebarNav = () => {
 const Playlist = () => {
 	return (
 		<div className="flex flex-col h-screen">
-			{/* <SearchBar /> */}
+			<SearchBar />
 			<p className="text-body font-medium text-20 pt-[33px] self-start pl-[10px]">
 				Add some songs to your playlist.
 			</p>

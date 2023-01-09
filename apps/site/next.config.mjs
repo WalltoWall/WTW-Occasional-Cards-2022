@@ -10,7 +10,15 @@ const withBundleAnalyzer = createBundleAnalyzer({
 const nextConfig = {
 	swcMinify: true,
 	reactStrictMode: true,
-	images: { formats: ["image/avif", "image/webp"] },
+	images: {
+		formats: ["image/avif", "image/webp"],
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "images.unsplash.com",
+			},
+		],
+	},
 	experimental: {
 		newNextLinkBehavior: true,
 		scrollRestoration: true,
@@ -18,8 +26,6 @@ const nextConfig = {
 		browsersListForSwc: true,
 		images: { allowFutureImage: true },
 	},
-
-	
 }
 
 export default withBundleAnalyzer(nextConfig)

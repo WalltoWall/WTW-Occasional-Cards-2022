@@ -7,7 +7,7 @@ const Greeting = () => {
 	return (
 		<Dialog.Root defaultOpen>
 			<Dialog.Overlay className="fixed inset-0 bg-black opacity-75" />
-			<Dialog.Content className="bg-black w-[650px] h-[800px] fixed top-[10%] left-[33%] focus:outline-none">
+			<Dialog.Content className="bg-black w-[650px] h-[800px] fixed top-[10%] left-2 md:left-8 lg:top-[10%] lg:left-[33%] focus:outline-none">
 				<div className="absolute top-6 left-6 w-[600px] h-[750px] bg-body flex flex-col">
 					<div className="flex items-center justify-center bg-header pb-[31px] pt-[17px]">
 						<MobileHeader />

@@ -22,12 +22,12 @@ const SidebarNav = () => {
 	return (
 		<Tabs.Root
 			defaultValue="playlist"
-			className="flex flex-col items-center overflow-x-auto max-w-full scrollbar-hide"
+			className="bg-black py-7 px-8 text-white"
 		>
-			<Tabs.List className="space-x-5 h-[50px] flex overflow-x-auto max-w-full pl-[142px] pr-[100px] scrollbar-hide items-center">
+			<Tabs.List className="space-x-20 flex">
 				<Tabs.Trigger
-					className="data-[state=active]:bg-yellow-search data-[state=active]:py-[8px] data-[state=active]:px-[40px] data-[state=active]:rounded-full data-[state=active]:font-semibold 
-					data-[state=active]:w-[179px] data-[state=active]:h-[40px] data-[state=inactive]:text-body data-[state=inactive]:font-bold flex-shrink-0 uppercase text-20 tracking-widest"
+					// className="data-[state=active]:bg-yellow-search data-[state=active]:py-[8px] data-[state=active]:px-[40px] data-[state=active]:rounded-full data-[state=active]:font-semibold
+					// data-[state=active]:w-[179px] data-[state=active]:h-[40px] data-[state=inactive]:text-body data-[state=inactive]:font-bold flex-shrink-0 uppercase text-20 tracking-widest"
 					value="playlist"
 					ref={rPlaylistBtn}
 					onClick={() => scrollBar({ button: rPlaylistBtn })}
@@ -35,8 +35,8 @@ const SidebarNav = () => {
 					Playlist
 				</Tabs.Trigger>
 				<Tabs.Trigger
-					className="data-[state=active]:bg-yellow-search data-[state=active]:py-[8px] data-[state=active]:rounded-full data-[state=active]:font-semibold 
-					data-[state=active]:w-[179px] data-[state=active]:h-[40px] data-[state=inactive]:text-body data-[state=inactive]:font-bold flex-shrink-0 uppercase text-20 tracking-widest"
+					// className="data-[state=active]:bg-yellow-search data-[state=active]:py-[8px] data-[state=active]:rounded-full data-[state=active]:font-semibold
+					// data-[state=active]:w-[179px] data-[state=active]:h-[40px] data-[state=inactive]:text-body data-[state=inactive]:font-bold flex-shrink-0 uppercase text-20 tracking-widest"
 					value="customize"
 					ref={rCustomizeBtn}
 					onClick={() => scrollBar({ button: rCustomizeBtn })}
@@ -44,8 +44,8 @@ const SidebarNav = () => {
 					Customize
 				</Tabs.Trigger>
 				<Tabs.Trigger
-					className="data-[state=active]:bg-yellow-search data-[state=active]:py-[8px] data-[state=active]:px-[40px] data-[state=active]:rounded-full data-[state=active]:font-semibold 
-					data-[state=active]:w-[179px] data-[state=active]:h-[40px] data-[state=inactive]:text-body data-[state=inactive]:font-bold flex-shrink-0 uppercase text-20 tracking-widest"
+					// className="data-[state=active]:bg-yellow-search data-[state=active]:py-[8px] data-[state=active]:px-[40px] data-[state=active]:rounded-full data-[state=active]:font-semibold
+					// data-[state=active]:w-[179px] data-[state=active]:h-[40px] data-[state=inactive]:text-body data-[state=inactive]:font-bold flex-shrink-0 uppercase text-20 tracking-widest"
 					value="stickers"
 					ref={rStickersBtn}
 					onClick={() => scrollBar({ button: rStickersBtn })}
@@ -54,16 +54,14 @@ const SidebarNav = () => {
 				</Tabs.Trigger>
 			</Tabs.List>
 
-			<Tabs.Content value="playlist">
-				<Playlist />
-			</Tabs.Content>
+			<Tabs.Content value="playlist">{/* <Playlist /> */}</Tabs.Content>
 
 			<Tabs.Content value="customize" className="w-full">
-				<Customize />
+				{/* <Customize /> */}
 			</Tabs.Content>
 
 			<Tabs.Content value="stickers" className="w-full">
-				<Stickers />
+				{/* <Stickers /> */}
 			</Tabs.Content>
 		</Tabs.Root>
 	)
@@ -71,8 +69,8 @@ const SidebarNav = () => {
 
 const Playlist = () => {
 	return (
-		<div className="flex flex-col h-screen lg:h-auto">
-			<SearchBar />
+		<div className="flex flex-col h-screen">
+			{/* <SearchBar /> */}
 			<p className="text-body font-medium text-20 pt-[33px] self-start pl-[10px]">
 				Add some songs to your playlist.
 			</p>
@@ -82,7 +80,7 @@ const Playlist = () => {
 
 const Customize = () => {
 	return (
-		<div className="flex flex-col pt-[64px]">
+		<div className="flex flex-col pt-[64px] h-screen">
 			<div className="flex flex-col justify-between px-6 items-start">
 				<div className="flex justify-between pb-2 w-full">
 					<h3 className="text-body uppercase text-20 font-bold tracking-widest">

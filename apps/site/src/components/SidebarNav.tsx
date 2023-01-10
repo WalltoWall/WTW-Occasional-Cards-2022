@@ -5,6 +5,7 @@ import Triangle from "./Icons/Triangle"
 import TapeSetting from "./TapeSetting"
 import Image from "next/image"
 import clsx from "clsx"
+import { Background } from "./Background"
 
 interface scroll {
 	button: RefObject<HTMLButtonElement>
@@ -54,7 +55,7 @@ const SidebarNav = ({ className, ...props }: Tabs.TabsProps) => {
 			)}
 			{...props}
 		>
-			<Tabs.List className="flex overflow-x-auto scrollbar-hide overflow-y-hidden px-8 overscroll-contain -mx-8">
+			<Tabs.List className="flex overflow-x-auto scrollbar-hide overflow-y-hidden px-8 overscroll-contain -mx-8 pl-24">
 				<Trigger
 					value="playlist"
 					ref={rPlaylistBtn}
@@ -123,26 +124,19 @@ const Customize = () => {
 				<div className="bg-body w-full h-1" />
 			</div>
 			<div className="flex mt-[1.406rem] justify-evenly">
-				<Image
+				<Background
+					alt=""
 					src="https://images.unsplash.com/photo-1503455637927-730bce8583c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-					alt=""
-					width={100}
-					height={100}
-					className="rounded-full w-[80px] h-[80px] md:w-[100px] md:h-[100px]"
 				/>
-				<Image
+
+				<Background
+					alt=""
 					src="https://images.unsplash.com/photo-1496715976403-7e36dc43f17b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-					alt=""
-					width={100}
-					height={100}
-					className="rounded-full w-[80px] h-[80px] md:w-[100px] md:h-[100px]"
 				/>
-				<Image
-					src="https://images.unsplash.com/photo-1617298748161-f59f6096f130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80"
+
+				<Background
 					alt=""
-					width={100}
-					height={100}
-					className="rounded-full w-[80px] h-[80px] md:w-[100px] md:h-[100px]"
+					src="https://images.unsplash.com/photo-1617298748161-f59f6096f130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80"
 				/>
 			</div>
 			<div className="flex flex-col justify-between px-6 items-start mt-[5.563rem]">

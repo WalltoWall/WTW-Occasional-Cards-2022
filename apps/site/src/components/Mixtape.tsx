@@ -33,8 +33,22 @@ export default function Mixtape() {
 
 	React.useEffect(() => {
 		const handleDesktopResize = () => {
-			// TODO: I hate this
+			const canvas = rCanvas.current
+			const header = document.querySelector<HTMLElement>("#header")
+			const sidebar = document.querySelector<HTMLElement>("#sidebar")
+
+			if (!canvas || !header || !sidebar) return
+
+			const newHeight = window.innerHeight - header.clientHeight
+
+			const newWidth = window.innerWidth - sidebar.clientWidth
+
+			canvas.height = newHeight
+			canvas.width = newWidth
+			canvas.style.height = newHeight + "px"
+			canvas.style.width = newWidth + "px"
 		}
+
 		const handleMobileResize = () => {
 			const canvas = rCanvas.current
 			const header = document.querySelector<HTMLElement>("#header")
@@ -59,7 +73,11 @@ export default function Mixtape() {
 	}, [])
 
 	return (
-		<Canvas camera={{ position: [0, 0, 30], fov: 55, zoom: 5 }} ref={rCanvas}>
+		<Canvas
+			camera={{ position: [0, 0, 30], fov: 55, zoom: 5 }}
+			ref={rCanvas}
+			className="pb-[30px]"
+		>
 			<ambientLight />
 			<Box />
 		</Canvas>

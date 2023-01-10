@@ -13,32 +13,32 @@ export const Greeting = () => {
 					<Dialog.Overlay className="fixed inset-0 bg-black opacity-75" />
 					<Dialog.Content className="fixed inset-4 lg:inset-y-28 focus:outline-none flex items-center justify-center">
 						<div className="flex flex-col max-w-[650px] p-4 bg-black">
-							<div className="py-6 lg:px-[99px] lg:pt-[97px] lg:pb-[40px] text-center flex items-center flex-col bg-body">
-								<p className="font-bold text-sm md:text-30 leading-tight capsize uppercase">
+							<div className="pt-10 pb-4 px-6 lg:px-[99px] lg:pt-[97px] lg:pb-[40px] text-center flex items-center flex-col bg-body">
+								<p className="font-bold text-xl md:text-30 leading-tight capsize uppercase">
 									Step 1
 								</p>
-								<p className="font-semibold text-sm md:text-22 leading-tight pt-[15px]">
+								<p className="font-semibold text-lg md:text-22 leading-tight pt-[15px]">
 									Build your playlist.
 								</p>
-								<p className="font-medium text-sm md:text-22 leading-tight pt-[10px]">
+								<p className="font-medium text-lg md:text-22 leading-tight pt-[10px]">
 									Let the music express what's in your heart.
 								</p>
-								<p className="font-bold text-sm md:text-30 uppercase leading-tight pt-[43px]">
+								<p className="font-bold text-xl md:text-30 uppercase leading-tight pt-[43px]">
 									Step 2
 								</p>
-								<p className="font-semibold text-sm md:text-22 leading-tight pt-[15px]">
+								<p className="font-semibold text-lg md:text-22 leading-tight pt-[15px]">
 									Customize Your Tape
 								</p>
-								<p className="font-medium text-sm md:text-22 leading-tight pt-[10px]">
+								<p className="font-medium text-lg md:text-22 leading-tight pt-[10px]">
 									Presentation matters!
 								</p>
-								<p className="font-bold text-sm md:text-30 uppercase leading-tight pt-[43px]">
+								<p className="font-bold text-xl md:text-30 uppercase leading-tight pt-[43px]">
 									Step 3
 								</p>
-								<p className="font-semibold text-sm md:text-22 leading-tight pt-[10px]">
+								<p className="font-semibold text-lg md:text-22 leading-tight pt-[10px]">
 									Share it!
 								</p>
-								<p className="font-medium text-sm md:text-22 leading-tight pt-[10px] pb-[72px]">
+								<p className="font-medium text-lg md:text-22 leading-tight pt-[10px] pb-[72px]">
 									You definitely have the best taste in music and people should
 									experience it.
 								</p>

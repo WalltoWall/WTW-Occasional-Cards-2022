@@ -8,12 +8,12 @@ import { Greeting } from "src/components/Greeting"
 const HomePage: NextPageWithLayout = () => {
 	return (
 		<>
-			<div className="flex flex-col h-100dvh overflow-hidden">
+			<div className="flex flex-col h-100dvh overflow-hidden lg:overflow-auto">
 				<Header className="shrink-0" />
 
 				<main className="contents lg:flex lg:flex-row-reverse lg:grow">
 					<Canvas className="grow" />
-					<SidebarNav className="h-[300px] shrink-0 lg:h-auto" />
+					<SidebarNav className="h-[320px] shrink-0 lg:h-auto lg:w-[464px]" />
 				</main>
 			</div>
 

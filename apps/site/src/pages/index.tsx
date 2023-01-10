@@ -7,16 +7,18 @@ import { Greeting } from "src/components/Greeting"
 
 const HomePage: NextPageWithLayout = () => {
 	return (
-		<div className="grid grid-rows-[auto,1fr,320px] lg:grid-rows-[auto,1fr] lg:grid-cols-[464px,1fr] grid-flow-dense h-100dvh">
-			<Header className="lg:col-span-2" />
+		<>
+			<div className="flex flex-col h-100dvh overflow-hidden">
+				<Header className="shrink-0" />
 
-			<main className="contents">
-				<Canvas className="lg:col-start-2" />
-				<SidebarNav />
-			</main>
+				<main className="contents lg:flex lg:flex-row-reverse lg:grow">
+					<Canvas className="grow" />
+					<SidebarNav className="h-[300px] shrink-0 lg:h-auto" />
+				</main>
+			</div>
 
 			<Greeting />
-		</div>
+		</>
 	)
 }
 

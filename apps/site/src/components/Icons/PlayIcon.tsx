@@ -9,7 +9,7 @@ const PlayIcon = (props: React.ComponentProps<"svg">) => {
 			<g
 				id="Design"
 				stroke="none"
-				stroke-width="1"
+				strokeWidth={1}
 				fill="none"
 				fillRule="evenodd"
 			>
@@ -19,22 +19,22 @@ const PlayIcon = (props: React.ComponentProps<"svg">) => {
 							<rect
 								id="Rectangle"
 								fill="#6FA59C"
-								x="0"
-								y="9"
-								width="90"
-								height="90"
-								rx="8"
+								x={0}
+								y={9}
+								width={90}
+								height={90}
+								rx={8}
 							></rect>
 							<rect
 								id="Rectangle-Copy"
 								stroke="#000000"
-								strokeWidth="3"
+								strokeWidth={3}
 								fill="#F9B740"
-								x="1.5"
-								y="1.5"
-								width="87"
-								height="87"
-								rx="8"
+								x={1.5}
+								y={1.5}
+								width={87}
+								height={87}
+								rx={8}
 							></rect>
 							<g id="Group-3" transform="translate(28.000000, 23.000000)">
 								<mask id="mask-r7_kf-_wnz-2" fill="white">

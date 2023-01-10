@@ -30,7 +30,7 @@ const Trigger = React.forwardRef<HTMLButtonElement, Tabs.TabsTriggerProps>(
 )
 Trigger.displayName = "Trigger"
 
-const SidebarNav = () => {
+const SidebarNav = ({ className, ...props }: Tabs.TabsProps) => {
 	const rPlaylistBtn = React.useRef<HTMLButtonElement>(null)
 	const rCustomizeBtn = React.useRef<HTMLButtonElement>(null)
 	const rStickersBtn = React.useRef<HTMLButtonElement>(null)
@@ -46,8 +46,13 @@ const SidebarNav = () => {
 
 	return (
 		<Tabs.Root
+			id="sidebar"
 			defaultValue="playlist"
-			className="bg-black py-7 px-8 text-white overflow-hidden"
+			className={clsx(
+				"bg-black py-7 px-8 text-white overflow-hidden",
+				className,
+			)}
+			{...props}
 		>
 			<Tabs.List className="flex overflow-x-auto scrollbar-hide overflow-y-hidden px-8 overscroll-contain -mx-8">
 				<Trigger

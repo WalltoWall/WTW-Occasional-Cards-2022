@@ -6,6 +6,7 @@ function Box(props: ThreeElements["mesh"]) {
 	const mesh = useRef<THREE.Mesh>(null!)
 	const [hovered, setHover] = useState(false)
 	const [active, setActive] = useState(false)
+
 	useFrame((state, delta) => (mesh.current.rotation.y += 0.02))
 
 	return (
@@ -23,9 +24,42 @@ function Box(props: ThreeElements["mesh"]) {
 	)
 }
 
+function isDesktop() {
+	return window.matchMedia("(min-width: 1024px)").matches
+}
+
 export default function Mixtape() {
+	const rCanvas = React.useRef<HTMLCanvasElement>(null)
+
+	React.useEffect(() => {
+		const handleDesktopResize = () => {
+			// TODO: I hate this
+		}
+		const handleMobileResize = () => {
+			const canvas = rCanvas.current
+			const header = document.querySelector<HTMLElement>("#header")
+			const sidebar = document.querySelector<HTMLElement>("#sidebar")
+
+			if (!canvas || !header || !sidebar) return
+
+			const newHeight =
+				window.innerHeight - header.clientHeight - sidebar.clientHeight
+
+			canvas.height = newHeight
+			canvas.style.height = newHeight + "px"
+		}
+
+		const handleResize = () => {
+			isDesktop() ? handleDesktopResize() : handleMobileResize()
+		}
+
+		window.addEventListener("resize", handleResize)
+
+		return () => window.removeEventListener("resize", handleResize)
+	}, [])
+
 	return (
-		<Canvas camera={{ position: [0, 10, 50], zoom: 20 }}>
+		<Canvas camera={{ position: [0, 0, 30], fov: 55, zoom: 5 }} ref={rCanvas}>
 			<ambientLight />
 			<Box />
 		</Canvas>

@@ -1,15 +1,8 @@
 import React from "react"
 
-const PlayIcon = () => {
+const PlayIcon = (props: React.ComponentProps<"svg">) => {
 	return (
-		<svg
-			width="90px"
-			height="99px"
-			viewBox="0 0 90 99"
-			version="1.1"
-			xmlns="http://www.w3.org/2000/svg"
-			xmlnsXlink="http://www.w3.org/1999/xlink"
-		>
+		<svg viewBox="0 0 90 99" {...props}>
 			<defs>
 				<polygon id="path-r7_kf-_wnz-1" points="0 0 39 0 39 44 0 44"></polygon>
 			</defs>

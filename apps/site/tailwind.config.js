@@ -33,13 +33,14 @@ module.exports = {
 				15: "15px",
 				20: "20px",
 				22: "22px",
+				30: "30px"
 			},
 			minHeight: {
 				"100dvh": "100dvh",
 			},
 			height: {
 				"100dvh": "100dvh",
-			}
+			},
 		},
 	},
 	plugins: [

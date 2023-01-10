@@ -1,16 +1,8 @@
 import React from "react"
 
-const Reset = () => {
+const Reset = (props: React.ComponentProps<"svg">) => {
 	return (
-		<svg
-			width="180px"
-			height="80px"
-			viewBox="0 0 180 80"
-			version="1.1"
-			xmlns="http://www.w3.org/2000/svg"
-			xmlnsXlink="http://www.w3.org/1999/xlink"
-			className="w-[100px] h-[80px] lg:w-[180px]"
-		>
+		<svg viewBox="0 0 180 80" {...props}>
 			<defs>
 				<polygon id="path-jwotwqj2lj-1" points="0 0 29 0 29 40 0 40"></polygon>
 				<polygon id="path-jwotwqj2lj-3" points="0 0 29 0 29 40 0 40"></polygon>

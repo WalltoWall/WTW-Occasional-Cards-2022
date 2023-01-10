@@ -18,7 +18,7 @@ const Trigger = React.forwardRef<HTMLButtonElement, Tabs.TabsTriggerProps>(
 				ref={ref}
 				className={clsx(
 					className,
-					"font-bold text-body text-20 tracking-widest uppercase rounded-full px-10 py-2 flex-shrink-0",
+					"font-bold text-body text-20 tracking-widest uppercase rounded-full px-10 py-2 flex-shrink-0 mb-4",
 					"data-[state=active]:bg-yellow-search data-[state=active]:text-black",
 				)}
 				{...props}
@@ -37,7 +37,11 @@ const SidebarNav = () => {
 
 	const scrollBar = ({ button }: scroll) => {
 		if (button == null) return
-		button.current?.scrollIntoView({ inline: "center", behavior: "smooth" })
+		button.current?.scrollIntoView({
+			inline: "center",
+			behavior: "smooth",
+			block: "center",
+		})
 	}
 
 	return (
@@ -69,15 +73,21 @@ const SidebarNav = () => {
 				</Trigger>
 			</Tabs.List>
 
-			<Tabs.Content value="playlist">
+			<Tabs.Content value="playlist" className="h-full overflow-y-auto">
 				<Playlist />
 			</Tabs.Content>
 
-			<Tabs.Content value="customize" className="w-full">
+			<Tabs.Content
+				value="customize"
+				className="h-full overflow-y-auto scrollbar-hide pb-16 -mx-8"
+			>
 				<Customize />
 			</Tabs.Content>
 
-			<Tabs.Content value="stickers" className="w-full">
+			<Tabs.Content
+				value="stickers"
+				className="h-full overflow-y-auto scrollbar-hide pb-16"
+			>
 				<Stickers />
 			</Tabs.Content>
 		</Tabs.Root>
@@ -86,7 +96,7 @@ const SidebarNav = () => {
 
 const Playlist = () => {
 	return (
-		<div className="flex flex-col h-screen">
+		<div className="flex flex-col">
 			<SearchBar />
 			<p className="text-body font-medium text-20 pt-[33px] self-start pl-[10px]">
 				Add some songs to your playlist.
@@ -97,7 +107,7 @@ const Playlist = () => {
 
 const Customize = () => {
 	return (
-		<div className="flex flex-col pt-[64px] h-screen">
+		<div className="flex flex-col pt-[48px] ">
 			<div className="flex flex-col justify-between px-6 items-start">
 				<div className="flex justify-between pb-2 w-full">
 					<h3 className="text-body uppercase text-20 font-bold tracking-widest">
@@ -113,21 +123,21 @@ const Customize = () => {
 					alt=""
 					width={100}
 					height={100}
-					className="rounded-full w-[100px] h-[100px]"
+					className="rounded-full w-[80px] h-[80px] md:w-[100px] md:h-[100px]"
 				/>
 				<Image
 					src="https://images.unsplash.com/photo-1496715976403-7e36dc43f17b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
 					alt=""
 					width={100}
 					height={100}
-					className="rounded-full w-[100px] h-[100px]"
+					className="rounded-full w-[80px] h-[80px] md:w-[100px] md:h-[100px]"
 				/>
 				<Image
 					src="https://images.unsplash.com/photo-1617298748161-f59f6096f130?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80"
 					alt=""
 					width={100}
 					height={100}
-					className="rounded-full w-[100px] h-[100px]"
+					className="rounded-full w-[80px] h-[80px] md:w-[100px] md:h-[100px]"
 				/>
 			</div>
 			<div className="flex flex-col justify-between px-6 items-start mt-[5.563rem]">
@@ -146,25 +156,25 @@ const Customize = () => {
 
 const Stickers = () => {
 	return (
-		<div className="flex flex-col pt-[45px] h-screen lg:h-auto">
-			<div className="flex justify-evenly ">
-				<div className="bg-body rounded-full w-[50px] h-[50px]" />
-				<div className="bg-body rounded-full w-[50px] h-[50px]" />
-				<div className="bg-body rounded-full w-[50px] h-[50px]" />
-				<div className="bg-body rounded-full w-[50px] h-[50px]" />
-				<div className="bg-body rounded-full w-[50px] h-[50px]" />
-				<div className="bg-body rounded-full w-[50px] h-[50px]" />
+		<div className="flex flex-col pt-[45px]">
+			<div className="flex justify-evenly">
+				<div className="bg-body rounded-full w-[40px] h-[40px] md:w-[50px] md:h-[50px]" />
+				<div className="bg-body rounded-full w-[40px] h-[40px] md:w-[50px] md:h-[50px]" />
+				<div className="bg-body rounded-full w-[40px] h-[40px] md:w-[50px] md:h-[50px]" />
+				<div className="bg-body rounded-full w-[40px] h-[40px] md:w-[50px] md:h-[50px]" />
+				<div className="bg-body rounded-full w-[40px] h-[40px] md:w-[50px] md:h-[50px]" />
+				<div className="bg-body rounded-full w-[40px] h-[40px] md:w-[50px] md:h-[50px]" />
 			</div>
 
-			<div className="grid grid-cols-2 auto-rows-auto mt-[3.375rem] justify-items-center px-[100px] lg:px-[26px] gap-5">
-				<div className="bg-white rounded-full w-[179px] h-[56px]" />
-				<div className="bg-white rounded-full w-[179px] h-[56px]" />
-				<div className="bg-white rounded-full w-[179px] h-[56px]" />
-				<div className="bg-white rounded-full w-[179px] h-[56px]" />
-				<div className="bg-white rounded-full w-[179px] h-[56px]" />
-				<div className="bg-white rounded-full w-[179px] h-[56px]" />
-				<div className="bg-white rounded-full w-[179px] h-[56px]" />
-				<div className="bg-white rounded-full w-[179px] h-[56px]" />
+			<div className="grid grid-cols-2 auto-rows-auto mt-[3.375rem] justify-items-center gap-5">
+				<div className="bg-white rounded-full w-[130px] h-[40px] md:w-[179px] md:h-[56px]" />
+				<div className="bg-white rounded-full w-[130px] h-[40px] md:w-[179px] md:h-[56px]" />
+				<div className="bg-white rounded-full w-[130px] h-[40px] md:w-[179px] md:h-[56px]" />
+				<div className="bg-white rounded-full w-[130px] h-[40px] md:w-[179px] md:h-[56px]" />
+				<div className="bg-white rounded-full w-[130px] h-[40px] md:w-[179px] md:h-[56px]" />
+				<div className="bg-white rounded-full w-[130px] h-[40px] md:w-[179px] md:h-[56px]" />
+				<div className="bg-white rounded-full w-[130px] h-[40px] md:w-[179px] md:h-[56px]" />
+				<div className="bg-white rounded-full w-[130px] h-[40px] md:w-[179px] md:h-[56px]" />
 			</div>
 		</div>
 	)

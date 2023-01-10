@@ -1,15 +1,14 @@
 import React from "react"
 
-const Search = () => {
+const Search = (props: React.ComponentProps<"svg">) => {
 	return (
-		<div className="bg-yellow-search rounded-full p-[8px] border-2 border-black mr-1">
+		<div className="bg-yellow-search rounded-full p-[8px] border-2 border-black m-1">
 			<svg
-				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
 				viewBox="0 0 24 24"
 				strokeWidth={1.5}
 				stroke="currentColor"
-				className="w-[20px] h-[20px]"
+				{...props}
 			>
 				<path
 					strokeLinecap="round"

@@ -1,16 +1,8 @@
 import React from "react"
 
-const Share = () => {
+const Share = (props: React.ComponentProps<"svg">) => {
 	return (
-		<svg
-			width="165px"
-			height="80px"
-			viewBox="0 0 165 80"
-			version="1.1"
-			xmlns="http://www.w3.org/2000/svg"
-			xmlnsXlink="http://www.w3.org/1999/xlink"
-			className="w-[100px] h-[80px] lg:w-[180px]"
-		>
+		<svg viewBox="0 0 165 80" {...props}>
 			<defs>
 				<polygon
 					id="path-yd08r9qewm-1"

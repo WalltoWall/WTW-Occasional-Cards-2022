@@ -12,10 +12,12 @@ const Canvas = ({ className, ...props }: React.ComponentProps<"div">) => {
 		<div
 			className={
 				backgroundImage
-					? clsx(className, "bg-none relative bg-cover")
+					? clsx(className, "relative bg-cover")
 					: clsx(className, "bg-body relative")
 			}
-			style={{ backgroundImage: `url(${backgroundImage})` }}
+			style={
+				backgroundImage ? { backgroundImage: `url(${backgroundImage})` } : {}
+			}
 			{...props}
 		>
 			<Mixtape />

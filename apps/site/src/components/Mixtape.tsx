@@ -1,11 +1,13 @@
 import * as THREE from "three"
 import React, { useRef, useState } from "react"
 import { Canvas, useFrame, ThreeElements } from "@react-three/fiber"
+import useAuthStore from "store/authStore"
 
 function Box(props: ThreeElements["mesh"]) {
 	const mesh = useRef<THREE.Mesh>(null!)
 	const [hovered, setHover] = useState(false)
 	const [active, setActive] = useState(false)
+	const { tapeColor } = useAuthStore()
 
 	useFrame((state, delta) => (mesh.current.rotation.y += 0.02))
 
@@ -19,7 +21,7 @@ function Box(props: ThreeElements["mesh"]) {
 			onPointerOut={(event) => setHover(false)}
 		>
 			<boxGeometry args={[3.5, 2, 0.3]} />
-			<meshStandardMaterial color={hovered ? "hotpink" : "lightGray"} />
+			<meshStandardMaterial color={tapeColor ? tapeColor : "lightGray"} />
 		</mesh>
 	)
 }

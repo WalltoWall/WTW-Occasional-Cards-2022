@@ -1,6 +1,7 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 import clsx from "clsx"
 import React, { useState } from "react"
+import useAuthStore from "store/authStore"
 
 interface TapeSettingProps {
 	name: string
@@ -8,6 +9,7 @@ interface TapeSettingProps {
 
 const TapeSetting = ({ name }: TapeSettingProps) => {
 	const [isSelected, setIsSelected] = useState("")
+	const { setTapeColor } = useAuthStore()
 
 	return (
 		<div className="mt-[2.063rem]">
@@ -22,7 +24,10 @@ const TapeSetting = ({ name }: TapeSettingProps) => {
 							  )
 							: "bg-white rounded-full w-[40px] h-[40px] md:w-[50px] md:h-[50px]"
 					}
-					onClick={() => setIsSelected("1")}
+					onClick={() => {
+						setIsSelected("1")
+						setTapeColor("white")
+					}}
 				/>
 				<div
 					className={
@@ -33,7 +38,10 @@ const TapeSetting = ({ name }: TapeSettingProps) => {
 							  )
 							: "bg-blue-600 rounded-full w-[40px] h-[40px] md:w-[50px] md:h-[50px]"
 					}
-					onClick={() => setIsSelected("2")}
+					onClick={() => {
+						setIsSelected("2")
+						setTapeColor("blue")
+					}}
 				/>
 				<div
 					className={
@@ -44,7 +52,10 @@ const TapeSetting = ({ name }: TapeSettingProps) => {
 							  )
 							: "bg-green-600 rounded-full w-[40px] h-[40px] md:w-[50px] md:h-[50px]"
 					}
-					onClick={() => setIsSelected("3")}
+					onClick={() => {
+						setIsSelected("3")
+						setTapeColor("green")
+					}}
 				/>
 				<div
 					className={
@@ -55,7 +66,10 @@ const TapeSetting = ({ name }: TapeSettingProps) => {
 							  )
 							: "bg-red-800 rounded-full w-[40px] h-[40px] md:w-[50px] md:h-[50px]"
 					}
-					onClick={() => setIsSelected("4")}
+					onClick={() => {
+						setIsSelected("4")
+						setTapeColor("red")
+					}}
 				/>
 				<div
 					className={
@@ -66,7 +80,10 @@ const TapeSetting = ({ name }: TapeSettingProps) => {
 							  )
 							: "bg-gray-500 rounded-full w-[40px] h-[40px] md:w-[50px] md:h-[50px]"
 					}
-					onClick={() => setIsSelected("5")}
+					onClick={() => {
+						setIsSelected("5")
+						setTapeColor("gray")
+					}}
 				/>
 				<div
 					className={
@@ -77,7 +94,10 @@ const TapeSetting = ({ name }: TapeSettingProps) => {
 							  )
 							: "bg-yellow-400 rounded-full w-[40px] h-[40px] md:w-[50px] md:h-[50px]"
 					}
-					onClick={() => setIsSelected("6")}
+					onClick={() => {
+						setIsSelected("6")
+						setTapeColor("yellow")
+					}}
 				/>
 			</div>
 		</div>

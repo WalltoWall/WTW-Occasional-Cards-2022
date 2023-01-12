@@ -3,9 +3,24 @@ import * as Tabs from "@radix-ui/react-tabs"
 import SearchBar from "./SearchBar"
 import Triangle from "./Icons/Triangle"
 import TapeSetting from "./TapeSetting"
-import Image from "next/image"
 import clsx from "clsx"
 import { Background } from "./Background"
+import { Sticker } from "./Sticker"
+import longSticker1 from "../../public/stickers/Gradient_anniversary.png"
+import longSticker2 from "../../public/stickers/Gradient_congrats.png"
+import longSticker3 from "../../public/stickers/Gradient_deuces.png"
+import longSticker4 from "../../public/stickers/Gradient_okrr.png"
+import longSticker5 from "../../public/stickers/Gradient_retirement.png"
+import longSticker6 from "../../public/stickers/Gradient_thanks.png"
+import longSticker7 from "../../public/stickers/Rainbow_congrats.png"
+import longSticker8 from "../../public/stickers/Gradient_hearts.png"
+
+import circleSticker1 from "../../public/stickers/Pastel_partyhat.png"
+import circleSticker2 from "../../public/stickers/Rainbow_congrats.png"
+import circleSticker3 from "../../public/stickers/Rainbow_question.png"
+import circleSticker4 from "../../public/stickers/Rainbow_vol1.png"
+import circleSticker5 from "../../public/stickers/Retro_arrow.png"
+import circleSticker6 from "../../public/stickers/Retro_cake.png"
 
 interface scroll {
 	button: RefObject<HTMLButtonElement>
@@ -154,26 +169,48 @@ const Customize = () => {
 }
 
 const Stickers = () => {
+	const circleStickers = [
+		circleSticker1,
+		circleSticker2,
+		circleSticker3,
+		circleSticker4,
+		circleSticker5,
+		circleSticker6,
+	]
+
+	const longStickers = [
+		longSticker1,
+		longSticker2,
+		longSticker3,
+		longSticker4,
+		longSticker5,
+		longSticker6,
+		longSticker7,
+		longSticker8,
+	]
+
 	return (
 		<div className="flex flex-col pt-[45px]">
 			<div className="flex justify-evenly">
-				<div className="bg-body rounded-full w-[40px] h-[40px] md:w-[50px] md:h-[50px]" />
-				<div className="bg-body rounded-full w-[40px] h-[40px] md:w-[50px] md:h-[50px]" />
-				<div className="bg-body rounded-full w-[40px] h-[40px] md:w-[50px] md:h-[50px]" />
-				<div className="bg-body rounded-full w-[40px] h-[40px] md:w-[50px] md:h-[50px]" />
-				<div className="bg-body rounded-full w-[40px] h-[40px] md:w-[50px] md:h-[50px]" />
-				<div className="bg-body rounded-full w-[40px] h-[40px] md:w-[50px] md:h-[50px]" />
+				{circleStickers.map((sticker, index) => (
+					<Sticker
+						key={index}
+						src={sticker}
+						alt=""
+						className="rounded-full w-[40px] h-[40px] md:w-[50px] md:h-[50px]"
+					/>
+				))}
 			</div>
 
 			<div className="grid grid-cols-2 auto-rows-auto mt-[3.375rem] justify-items-center gap-5">
-				<div className="bg-white rounded-full w-[130px] h-[40px] md:w-[179px] md:h-[56px]" />
-				<div className="bg-white rounded-full w-[130px] h-[40px] md:w-[179px] md:h-[56px]" />
-				<div className="bg-white rounded-full w-[130px] h-[40px] md:w-[179px] md:h-[56px]" />
-				<div className="bg-white rounded-full w-[130px] h-[40px] md:w-[179px] md:h-[56px]" />
-				<div className="bg-white rounded-full w-[130px] h-[40px] md:w-[179px] md:h-[56px]" />
-				<div className="bg-white rounded-full w-[130px] h-[40px] md:w-[179px] md:h-[56px]" />
-				<div className="bg-white rounded-full w-[130px] h-[40px] md:w-[179px] md:h-[56px]" />
-				<div className="bg-white rounded-full w-[130px] h-[40px] md:w-[179px] md:h-[56px]" />
+				{longStickers.map((sticker, index) => (
+					<Sticker
+						key={index}
+						src={sticker}
+						alt=""
+						className="rounded-full w-[130px] h-[40px] md:w-[179px] md:h-[56px]"
+					/>
+				))}
 			</div>
 		</div>
 	)

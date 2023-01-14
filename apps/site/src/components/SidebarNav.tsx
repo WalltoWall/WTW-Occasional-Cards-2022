@@ -1,4 +1,4 @@
-import React, { RefObject } from "react"
+import React, { RefObject, useState } from "react"
 import * as Tabs from "@radix-ui/react-tabs"
 import SearchBar from "./SearchBar"
 import Triangle from "./Icons/Triangle"
@@ -116,12 +116,32 @@ const SidebarNav = ({ className, ...props }: Tabs.TabsProps) => {
 }
 
 const Playlist = () => {
+	const [accessToken, setAccessToken] = useState("")
+	const [search, setSearch] = useState("")
+	const [searchResults, setSearchResults] = useState([])
+
+	const handleClick = () => {
+		const response = fetch("http://localhost:3000/api/auth")
+			.then((response) => response.json())
+			.then((data) => {
+				console.log("Set Access Token")
+				setAccessToken(data)
+			})
+	}
+
 	return (
 		<div className="flex flex-col">
 			<SearchBar />
 			<p className="text-body font-medium text-20 pt-[33px] self-start pl-[10px]">
 				Add some songs to your playlist.
 			</p>
+
+			<button
+				className="mt-[40px] py-4 border-2 border-white"
+				onClick={() => handleClick()}
+			>
+				Get Token
+			</button>
 		</div>
 	)
 }

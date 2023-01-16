@@ -23,6 +23,7 @@
 		"@types/three": "^0.148.0",
 		"axios": "^1.2.2",
 		"qs": "^6.11.0",
+		"spotify-web-api-js": "^1.5.2",
 		"tailwind-scrollbar-hide": "^1.1.7",
 		"three": "^0.148.0",
 		"zustand": "^4.3.1"

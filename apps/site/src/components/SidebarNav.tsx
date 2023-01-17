@@ -143,6 +143,7 @@ const Playlist = () => {
 					return (
 						<SongResult
 							key={track.uri}
+							id={track.id}
 							title={track.title}
 							image={track.albumUrl}
 							artist={track.artist}

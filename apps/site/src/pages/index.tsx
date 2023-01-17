@@ -4,6 +4,9 @@ import SidebarNav from "src/components/SidebarNav"
 import { Header } from "src/components/Header"
 import Canvas from "src/components/Canvas"
 import { Greeting } from "src/components/Greeting"
+import { getCookie, setCookie } from "cookies-next"
+import { randomUUID } from "crypto"
+import { GetServerSidePropsContext } from "next"
 
 const HomePage: NextPageWithLayout = () => {
 	return (
@@ -24,6 +27,24 @@ const HomePage: NextPageWithLayout = () => {
 
 HomePage.getLayout = (page) => {
 	return <Layout>{page}</Layout>
+}
+
+export async function getServerSideProps({
+	req,
+	res,
+}: GetServerSidePropsContext) {
+	const userId = getCookie("userId", { req, res, httpOnly: true })
+
+	if (!userId) {
+		const newUserId = randomUUID()
+		setCookie("userId", newUserId, {
+			req,
+			res,
+			maxAge: 2147483647,
+			httpOnly: true,
+		})
+	}
+	return { props: {} }
 }
 
 export default HomePage

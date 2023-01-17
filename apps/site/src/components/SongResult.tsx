@@ -1,19 +1,30 @@
 import Image from "next/image"
 import React, { useState } from "react"
+import { trpc } from "src/utils/trpc"
 
 interface SongProps {
+	id: string
 	title: string
 	image: string
 	artist: string
 	trackUrl: string
 }
 
-export const SongResult = ({ title, image, artist, trackUrl }: SongProps) => {
+export const SongResult = ({
+	id,
+	title,
+	image,
+	artist,
+	trackUrl,
+}: SongProps) => {
 	const [isPlaying, setIsPlaying] = useState(false)
 	const [audio] = useState<HTMLAudioElement>(new Audio(trackUrl))
 
+	const addPlaylist = trpc.spotify.addToPlaylist.useMutation()
+
 	function handlePlaySong() {
 		console.log("Playing: ", title)
+		addPlaylist.mutate({ trackId: id })
 
 		if (isPlaying) {
 			audio.pause()

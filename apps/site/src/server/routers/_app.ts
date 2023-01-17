@@ -1,8 +1,10 @@
 import { TRPCError } from "@trpc/server"
+import { db } from "src/firebase/firebase"
 import SpotifyWebApi from "spotify-web-api-node"
 import { getAccessToken } from "src/spotify/token"
 import { z } from "zod"
-import { procedure, router } from "../trpc"
+import { idProcedure, procedure, router } from "../trpc"
+import { addTrack } from "src/firebase/user"
 
 const spotify = router({
 	searchTracks: procedure
@@ -29,6 +31,7 @@ const spotify = router({
 				}, track.album.images[0])
 
 				return {
+					id: track.id,
 					artist: track.artists[0].name,
 					title: track.name,
 					uri: track.uri,
@@ -40,9 +43,21 @@ const spotify = router({
 			return tracks ?? []
 		}),
 
-	addToPlaylist: procedure
-		.input(z.object({ trackId: z.string(), userId: z.string() }))
+	addToPlaylist: idProcedure
+		.input(z.object({ trackId: z.string() }))
+		.mutation(async ({ input, ctx }) => {
+			console.log(ctx.userId)
+
+			return await addTrack(ctx.userId, input.trackId)
+		}),
+	removeFromPlaylist: idProcedure
+		.input(z.object({ trackId: z.string() }))
 		.mutation(async ({ input }) => {
+			// TODO: Send ids to firebase
+		}),
+	fetchPlaylist: idProcedure
+		.input(z.object({ trackId: z.string() }))
+		.query(async ({ input }) => {
 			// TODO: Send ids to firebase
 		}),
 })

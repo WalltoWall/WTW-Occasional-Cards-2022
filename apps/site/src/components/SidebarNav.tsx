@@ -1,4 +1,4 @@
-import React, { RefObject, useEffect, useState } from "react"
+import React, { RefObject, useState } from "react"
 import * as Tabs from "@radix-ui/react-tabs"
 import SearchBar from "./SearchBar"
 import Triangle from "./Icons/Triangle"
@@ -21,10 +21,9 @@ import circleSticker3 from "../../public/stickers/Rainbow_question.png"
 import circleSticker4 from "../../public/stickers/Rainbow_vol1.png"
 import circleSticker5 from "../../public/stickers/Retro_arrow.png"
 import circleSticker6 from "../../public/stickers/Retro_cake.png"
-import SpotifyWebApi from "spotify-web-api-js"
 import { SongResult } from "./SongResult"
-import { MusicPlayer } from "./MusicPlayer"
-import useAuthStore from "store/authStore"
+import { useDebounce } from "src/hooks/useDebounce"
+import { trpc } from "../utils/trpc"
 
 interface scroll {
 	button: RefObject<HTMLButtonElement>
@@ -123,79 +122,34 @@ const SidebarNav = ({ className, ...props }: Tabs.TabsProps) => {
 }
 
 const Playlist = () => {
-	const [accessToken, setAccessToken] = useState("")
 	const [search, setSearch] = useState("")
-	const [searchResults, setSearchResults] = useState<any>([])
-	const { currentSong } = useAuthStore()
-
-	const spotifyApi = new SpotifyWebApi()
-
-	const handleClick = () => {
-		const response = fetch("http://localhost:3000/api/auth")
-			.then((response) => response.json())
-			.then((data) => {
-				console.log("Set Access Token")
-				setAccessToken(data)
-			})
-	}
-
-	useEffect(() => {
-		if (!accessToken) return
-		spotifyApi.setAccessToken(accessToken)
-	}, [accessToken])
-
-	useEffect(() => {
-		if (!search) return setSearchResults([])
-		if (!accessToken) return
-
-		spotifyApi.searchTracks(search).then((res) => {
-			setSearchResults(
-				res.tracks?.items.map((track: any) => {
-					const smallestImage = track.album.images.reduce(
-						(smallest: any, image: any) => {
-							if (image.height < smallest.height) return image
-
-							return smallest
-						},
-						track.album.images[0],
-					)
-
-					return {
-						artist: track.artists[0].name,
-						title: track.name,
-						uri: track.uri,
-						preview: track.preview_url,
-						albumUrl: smallestImage.url,
-					}
-				}),
-			)
-		})
-
-		return
-	}, [search, accessToken])
+	const debouncedSearch = useDebounce(search, 150)
+	const tracks = trpc.spotify.searchTracks.useQuery(
+		{ query: debouncedSearch },
+		{ enabled: debouncedSearch !== "" },
+	)
 
 	return (
 		<div className="flex flex-col max-h-[727px] pb-[20px]">
-			<SearchBar
-				value={search}
-				onChange={(e) => setSearch(e.target.value)}
-				onClick={() => handleClick()}
-			/>
+			<SearchBar value={search} onChange={(e) => setSearch(e.target.value)} />
 			{!search && (
 				<p className="text-body font-medium text-20 pt-[33px] self-start pl-[10px]">
 					Add some songs to your playlist.
 				</p>
 			)}
 			<div className="flex-grow my-4">
-				{searchResults.map((track: any) => (
-					<SongResult
-						key={track.uri}
-						title={track.title}
-						image={track.albumUrl}
-						artist={track.artist}
-						trackUrl={track.preview}
-					/>
-				))}
+				{tracks.data?.map((track) => {
+					if (!track.preview) return
+					return (
+						<SongResult
+							key={track.uri}
+							title={track.title}
+							image={track.albumUrl}
+							artist={track.artist}
+							trackUrl={track.preview}
+						/>
+					)
+				})}
 			</div>
 		</div>
 	)

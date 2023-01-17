@@ -4,6 +4,7 @@ import "../styles/index.css"
 import Head from "next/head"
 import { type AppProps } from "next/app"
 import { type NextPage } from "next"
+import { trpc } from "../utils/trpc"
 
 export type NextPageWithLayout<P = Record<string, unknown>> = NextPage<P> & {
 	getLayout?: (page: React.ReactElement<P>) => React.ReactNode
@@ -35,4 +36,4 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
 	)
 }
 
-export default App
+export default trpc.withTRPC(App)

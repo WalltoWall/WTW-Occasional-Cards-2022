@@ -12,11 +12,19 @@
 	},
 	"dependencies": {
 		"@radix-ui/react-dialog": "^1.0.2",
+		"@tanstack/react-query": "^4.22.0",
+		"@trpc/client": "^10.9.0",
+		"@trpc/next": "^10.9.0",
+		"@trpc/react-query": "^10.9.0",
+		"@trpc/server": "^10.9.0",
 		"@walltowall/helpers": "^7.0.2",
 		"clsx": "^1.2.1",
+		"just-debounce": "^1.1.0",
 		"next": "^13.0.4",
 		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
+		"react-dom": "^18.2.0",
+		"spotify-web-api-node": "^5.0.2",
+		"zod": "^3.20.2"
 	},
 	"devDependencies": {
 		"@asyarb/tailwind-capsize": "^1.2.1",
@@ -28,6 +36,7 @@
 		"@types/node": "^18.7.13",
 		"@types/react": "^18.0.17",
 		"@types/react-dom": "^18.0.6",
+		"@types/spotify-web-api-node": "^5.0.7",
 		"@typescript-eslint/eslint-plugin": "^5.35.1",
 		"@typescript-eslint/parser": "^5.35.1",
 		"@walltowall/prettier-config": "^1.0.0",

@@ -17,11 +17,11 @@ export const Background = ({ src, alt }: bgProps) => {
 				setBgImage(src)
 				setBackground(bgImage)
 			}}
-			className={
-				backgroundImage === bgImage
-					? "border-4 border-white rounded-full"
-					: "border-none"
-			}
+			// className={
+			// 	backgroundImage === bgImage
+			// 		? "border-4 border-white rounded-full"
+			// 		: "border-none"
+			// }
 		>
 			<Image
 				src={src}

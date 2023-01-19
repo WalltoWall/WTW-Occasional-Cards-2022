@@ -44,6 +44,7 @@ export async function getServerSideProps({
 			httpOnly: true,
 		})
 	}
+
 	return { props: {} }
 }
 

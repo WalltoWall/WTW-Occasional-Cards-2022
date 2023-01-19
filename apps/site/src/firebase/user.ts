@@ -30,6 +30,7 @@ export async function addTrack(id: string, trackId: string) {
 		},
 		{ merge: true },
 	)
+
 	return true
 }
 
@@ -37,6 +38,7 @@ export async function getUser(id: string) {
 	const userRef = collection.doc(id)
 	const userDoc = await userRef.get()
 	const data = userDoc.data()
+
 	return data
 }
 
@@ -45,5 +47,6 @@ export async function removeTrack(id: string, trackId: string) {
 	const removedTrack = await userRef.update({
 		trackIds: FieldValue.arrayRemove(trackId),
 	})
+
 	return true
 }

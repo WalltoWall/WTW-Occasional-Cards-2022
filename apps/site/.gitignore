@@ -45,3 +45,6 @@ netlify/functions
 .env
 .env.*
 !.env.example
+
+# firebase
+firebase.json

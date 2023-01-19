@@ -158,11 +158,7 @@ const Playlist = () => {
 			) : (
 				<div className="flex-grow my-4">
 					{playlist.data?.map((track) => {
-						console.log(track.id)
-
-						if (!track.preview) {
-							return null
-						}
+						if (!track.preview) return
 
 						return (
 							<SongResult

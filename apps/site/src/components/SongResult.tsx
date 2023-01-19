@@ -20,10 +20,15 @@ export const SongResult = ({
 }: SongProps) => {
 	const [isPlaying, setIsPlaying] = useState(false)
 	const { playlist, setPlaylist } = useAuthStore()
+	const trpcUtils = trpc.useContext()
 
 	const [audio] = useState<HTMLAudioElement>(new Audio(trackUrl))
 
-	const addPlaylist = trpc.spotify.addToPlaylist.useMutation()
+	const addPlaylist = trpc.spotify.addToPlaylist.useMutation({
+		onSuccess: () => {
+			trpcUtils.spotify.fetchPlaylist.invalidate()
+		},
+	})
 
 	function handlePlaySong() {
 		console.log("Playing: ", title)
@@ -61,18 +66,10 @@ export const SongResult = ({
 			<button
 				onClick={() => {
 					addSong(id)
-					setPlaylist(playlist, { title: title, artist: artist, image: image })
+					setPlaylist(id, playlist)
 				}}
 			>
-				{playlist.includes({
-					title: title,
-					artist: artist,
-					image: image,
-				}) ? (
-					<p>Added</p>
-				) : (
-					<p>Add</p>
-				)}
+				{playlist.includes(id) ? <p>Remove</p> : <p>Add</p>}
 			</button>
 		</div>
 	)

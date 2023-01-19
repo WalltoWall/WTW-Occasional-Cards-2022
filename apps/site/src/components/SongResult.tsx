@@ -19,12 +19,18 @@ export const SongResult = ({
 	trackUrl,
 }: SongProps) => {
 	const [isPlaying, setIsPlaying] = useState(false)
-	const { playlist, setPlaylist } = useAuthStore()
 	const trpcUtils = trpc.useContext()
+	const playlist = trpc.spotify.fetchPlaylist.useQuery()
 
 	const [audio] = useState<HTMLAudioElement>(new Audio(trackUrl))
 
 	const addPlaylist = trpc.spotify.addToPlaylist.useMutation({
+		onSuccess: () => {
+			trpcUtils.spotify.fetchPlaylist.invalidate()
+		},
+	})
+
+	const removeFromPlaylist = trpc.spotify.removeFromPlaylist.useMutation({
 		onSuccess: () => {
 			trpcUtils.spotify.fetchPlaylist.invalidate()
 		},
@@ -47,6 +53,11 @@ export const SongResult = ({
 		addPlaylist.mutate({ trackId: id })
 	}
 
+	function removeSongs(id: string) {
+		console.log("removing song")
+		removeFromPlaylist.mutate({ trackId: id })
+	}
+
 	return (
 		<div
 			className="flex mx-2 my-4 items-center last:mb-20"
@@ -63,14 +74,24 @@ export const SongResult = ({
 				<p>{title}</p>
 				<p className="text-gray-300">{artist}</p>
 			</div>
-			<button
-				onClick={() => {
-					addSong(id)
-					setPlaylist(id, playlist)
-				}}
-			>
-				{playlist.includes(id) ? <p>Remove</p> : <p>Add</p>}
-			</button>
+
+			{playlist.data?.find((e) => e.id === id) ? (
+				<p
+					onClick={() => {
+						removeSongs(id)
+					}}
+				>
+					Remove
+				</p>
+			) : (
+				<button
+					onClick={() => {
+						addSong(id)
+					}}
+				>
+					Add
+				</button>
+			)}
 		</div>
 	)
 }

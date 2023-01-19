@@ -4,7 +4,7 @@ import SpotifyWebApi from "spotify-web-api-node"
 import { getAccessToken } from "src/spotify/token"
 import { z } from "zod"
 import { idProcedure, procedure, router } from "../trpc"
-import { addTrack, getUser } from "src/firebase/user"
+import { addTrack, getUser, removeTrack } from "src/firebase/user"
 import { createClient } from "src/spotify/client"
 import { getTracksFromIds } from "src/spotify/tracks"
 
@@ -42,14 +42,16 @@ const spotify = router({
 		.mutation(async ({ input, ctx }) => {
 			return await addTrack(ctx.userId, input.trackId)
 		}),
+
 	removeFromPlaylist: idProcedure
 		.input(z.object({ trackId: z.string() }))
-		.mutation(async ({ input }) => {
-			// TODO: Send ids to firebase
+		.mutation(async ({ input, ctx }) => {
+			return await removeTrack(ctx.userId, input.trackId)
 		}),
+
 	fetchPlaylist: idProcedure.query(async ({ input, ctx }) => {
 		const user = await getUser(ctx.userId)
-		if (!user) return []
+		if (!user || user.trackIds.length === 0) return []
 
 		const tracks = await getTracksFromIds(user.trackIds)
 

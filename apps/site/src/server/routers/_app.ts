@@ -4,21 +4,15 @@ import SpotifyWebApi from "spotify-web-api-node"
 import { getAccessToken } from "src/spotify/token"
 import { z } from "zod"
 import { idProcedure, procedure, router } from "../trpc"
-import { addTrack } from "src/firebase/user"
+import { addTrack, getUser } from "src/firebase/user"
+import { createClient } from "src/spotify/client"
+import { getTracksFromIds } from "src/spotify/tracks"
 
 const spotify = router({
 	searchTracks: procedure
 		.input(z.object({ query: z.string() }))
 		.query(async ({ input }) => {
-			const token = await getAccessToken()
-			if (!token)
-				throw new TRPCError({
-					code: "INTERNAL_SERVER_ERROR",
-					message: "Failed to get token",
-				})
-			const spotifyApi = new SpotifyWebApi()
-
-			spotifyApi.setAccessToken(token.access_token)
+			const spotifyApi = await createClient()
 
 			const response = await spotifyApi.searchTracks(input.query)
 
@@ -46,8 +40,6 @@ const spotify = router({
 	addToPlaylist: idProcedure
 		.input(z.object({ trackId: z.string() }))
 		.mutation(async ({ input, ctx }) => {
-			console.log(ctx.userId)
-
 			return await addTrack(ctx.userId, input.trackId)
 		}),
 	removeFromPlaylist: idProcedure
@@ -55,11 +47,14 @@ const spotify = router({
 		.mutation(async ({ input }) => {
 			// TODO: Send ids to firebase
 		}),
-	fetchPlaylist: idProcedure
-		.input(z.object({ trackId: z.string() }))
-		.query(async ({ input }) => {
-			// TODO: Send ids to firebase
-		}),
+	fetchPlaylist: idProcedure.query(async ({ input, ctx }) => {
+		const user = await getUser(ctx.userId)
+		if (!user) return []
+
+		const tracks = await getTracksFromIds(user.trackIds)
+
+		return tracks
+	}),
 })
 
 export const appRouter = router({

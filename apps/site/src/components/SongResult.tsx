@@ -1,6 +1,7 @@
 import Image from "next/image"
 import React, { useState } from "react"
 import { trpc } from "src/utils/trpc"
+import useAuthStore from "store/authStore"
 
 interface SongProps {
 	id: string
@@ -18,13 +19,14 @@ export const SongResult = ({
 	trackUrl,
 }: SongProps) => {
 	const [isPlaying, setIsPlaying] = useState(false)
+	const { playlist, setPlaylist } = useAuthStore()
+
 	const [audio] = useState<HTMLAudioElement>(new Audio(trackUrl))
 
 	const addPlaylist = trpc.spotify.addToPlaylist.useMutation()
 
 	function handlePlaySong() {
 		console.log("Playing: ", title)
-		addPlaylist.mutate({ trackId: id })
 
 		if (isPlaying) {
 			audio.pause()
@@ -33,6 +35,11 @@ export const SongResult = ({
 			audio.play()
 			setIsPlaying(true)
 		}
+	}
+
+	function addSong(id: string) {
+		console.log("adding song")
+		addPlaylist.mutate({ trackId: id })
 	}
 
 	return (
@@ -47,10 +54,26 @@ export const SongResult = ({
 				width={64}
 				height={64}
 			/>
-			<div className="ml-3">
+			<div className="ml-3 mr-auto">
 				<p>{title}</p>
 				<p className="text-gray-300">{artist}</p>
 			</div>
+			<button
+				onClick={() => {
+					addSong(id)
+					setPlaylist(playlist, { title: title, artist: artist, image: image })
+				}}
+			>
+				{playlist.includes({
+					title: title,
+					artist: artist,
+					image: image,
+				}) ? (
+					<p>Added</p>
+				) : (
+					<p>Add</p>
+				)}
+			</button>
 		</div>
 	)
 }

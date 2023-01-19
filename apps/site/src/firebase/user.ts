@@ -23,10 +23,21 @@ const collection = db.collection("users").withConverter({
 
 export async function addTrack(id: string, trackId: string) {
 	const userRef = collection.doc(id)
-	const newTrack = await userRef.update({
-		trackIds: FieldValue.arrayUnion(trackId),
-	})
+	const newTrack = await userRef.set(
+		{
+			id,
+			trackIds: FieldValue.arrayUnion(trackId),
+		},
+		{ merge: true },
+	)
 	return true
+}
+
+export async function getUser(id: string) {
+	const userRef = collection.doc(id)
+	const userDoc = await userRef.get()
+	const data = userDoc.data()
+	return data
 }
 
 export async function removeTrack(id: string, trackId: string) {

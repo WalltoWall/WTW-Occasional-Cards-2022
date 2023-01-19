@@ -24,6 +24,7 @@ import circleSticker6 from "../../public/stickers/Retro_cake.png"
 import { SongResult } from "./SongResult"
 import { useDebounce } from "src/hooks/useDebounce"
 import { trpc } from "../utils/trpc"
+import useAuthStore from "store/authStore"
 
 interface scroll {
 	button: RefObject<HTMLButtonElement>
@@ -123,35 +124,59 @@ const SidebarNav = ({ className, ...props }: Tabs.TabsProps) => {
 
 const Playlist = () => {
 	const [search, setSearch] = useState("")
-	const debouncedSearch = useDebounce(search, 150)
-	const tracks = trpc.spotify.searchTracks.useQuery(
+	const debouncedSearch = useDebounce(search, 100)
+	const searchedTracks = trpc.spotify.searchTracks.useQuery(
 		{ query: debouncedSearch },
 		{ enabled: debouncedSearch !== "" },
 	)
+	const playlist = trpc.spotify.fetchPlaylist.useQuery()
 
 	return (
 		<div className="flex flex-col max-h-[727px] pb-[20px]">
 			<SearchBar value={search} onChange={(e) => setSearch(e.target.value)} />
-			{!search && (
+			{search ? (
+				<div className="flex-grow my-4">
+					{searchedTracks.data?.map((track) => {
+						if (!track.preview) return
+
+						return (
+							<SongResult
+								key={track.uri}
+								id={track.id}
+								title={track.title}
+								image={track.albumUrl}
+								artist={track.artist}
+								trackUrl={track.preview}
+							/>
+						)
+					})}
+				</div>
+			) : playlist.data?.length === 0 ? (
 				<p className="text-body font-medium text-20 pt-[33px] self-start pl-[10px]">
 					Add some songs to your playlist.
 				</p>
+			) : (
+				<div className="flex-grow my-4">
+					{playlist.data?.map((track) => {
+						console.log(track.id)
+
+						if (!track.preview) {
+							return null
+						}
+
+						return (
+							<SongResult
+								key={track.uri}
+								id={track.id}
+								title={track.title}
+								image={track.albumUrl}
+								artist={track.artist}
+								trackUrl={track.preview}
+							/>
+						)
+					})}
+				</div>
 			)}
-			<div className="flex-grow my-4">
-				{tracks.data?.map((track) => {
-					if (!track.preview) return
-					return (
-						<SongResult
-							key={track.uri}
-							id={track.id}
-							title={track.title}
-							image={track.albumUrl}
-							artist={track.artist}
-							trackUrl={track.preview}
-						/>
-					)
-				})}
-			</div>
 		</div>
 	)
 }
